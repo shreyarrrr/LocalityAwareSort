@@ -13,13 +13,13 @@ import java.util.regex.Pattern;
 
 /**
  *  <i>Standard input</i>. This class provides methods for reading strings
- *  and numbers from standard input. See
+ *  and numbers from standard input. See 
  *  <a href="http://introcs.cs.princeton.edu/15inout">Section 1.5</a> of
  *  <i>Introduction to Programming in Java: An Interdisciplinary Approach</i>
  *  by Robert Sedgewick and Kevin Wayne.
  *  <p>
  *  See the technical information in the documentation of the {@link In}
- *  class, which applies to this class as well.
+ *  class, which applies to this class as well. 
  *
  *  @author Robert Sedgewick
  *  @author Kevin Wayne
@@ -30,45 +30,45 @@ public final class StdIn {
     private StdIn() {}
 
     private static Scanner scanner;
-
+ 
     /*** begin: section (1 of 2) of code duplicated from In to StdIn */
-
+    
     // assume Unicode UTF-8 encoding
     private static final String charsetName = "UTF-8";
 
     // assume language = English, country = US for consistency with System.out.
-    private static final java.util.Locale usLocale =
-            new java.util.Locale("en", "US");
+    private static final java.util.Locale usLocale = 
+        new java.util.Locale("en", "US");
 
-    // the default token separator; we maintain the invariant that this value
+    // the default token separator; we maintain the invariant that this value 
     // is held by the scanner's delimiter between calls
     private static final Pattern WHITESPACE_PATTERN
-            = Pattern.compile("\\p{javaWhitespace}+");
+        = Pattern.compile("\\p{javaWhitespace}+");
 
-    // makes whitespace characters significant
+    // makes whitespace characters significant 
     private static final Pattern EMPTY_PATTERN
-            = Pattern.compile("");
+        = Pattern.compile("");
 
     // used to read the entire input. source:
     // http://weblogs.java.net/blog/pat/archive/2004/10/stupid_scanner_1.html
     private static final Pattern EVERYTHING_PATTERN
-            = Pattern.compile("\\A");
+        = Pattern.compile("\\A");
 
     /*** end: section (1 of 2) of code duplicated from In to StdIn */
 
     /*** begin: section (2 of 2) of code duplicated from In to StdIn,
-     *  with all methods changed from "public" to "public static" ***/
+      *  with all methods changed from "public" to "public static" ***/
 
-    /**
+   /**
      * Is the input empty (except possibly for whitespace)? Use this
-     * to know whether the next call to {@link #readString()},
+     * to know whether the next call to {@link #readString()}, 
      * {@link #readDouble()}, etc will succeed.
      */
     public static boolean isEmpty() {
         return !scanner.hasNext();
     }
 
-    /**
+   /**
      * Does the input have a next line? Use this to know whether the
      * next call to {@link #readLine()} will succeed. <p> Functionally
      * equivalent to {@link #hasNextChar()}.
@@ -78,7 +78,7 @@ public final class StdIn {
     }
 
     /**
-     * Is the input empty (including whitespace)? Use this to know
+     * Is the input empty (including whitespace)? Use this to know 
      * whether the next call to {@link #readChar()} will succeed. <p> Functionally
      * equivalent to {@link #hasNextLine()}.
      */
@@ -90,7 +90,7 @@ public final class StdIn {
     }
 
 
-    /**
+   /**
      * Read and return the next line.
      */
     public static String readLine() {
@@ -107,13 +107,13 @@ public final class StdIn {
         scanner.useDelimiter(EMPTY_PATTERN);
         String ch = scanner.next();
         assert (ch.length() == 1) : "Internal (Std)In.readChar() error!"
-                + " Please contact the authors.";
+            + " Please contact the authors.";
         scanner.useDelimiter(WHITESPACE_PATTERN);
         return ch.charAt(0);
-    }
+    }  
 
 
-    /**
+   /**
      * Read and return the remainder of the input as a string.
      */
     public static String readAll() {
@@ -127,49 +127,49 @@ public final class StdIn {
     }
 
 
-    /**
+   /**
      * Read and return the next string.
      */
     public static String readString() {
         return scanner.next();
     }
 
-    /**
+   /**
      * Read and return the next int.
      */
     public static int readInt() {
         return scanner.nextInt();
     }
 
-    /**
+   /**
      * Read and return the next double.
      */
     public static double readDouble() {
         return scanner.nextDouble();
     }
 
-    /**
+   /**
      * Read and return the next float.
      */
     public static float readFloat() {
         return scanner.nextFloat();
     }
 
-    /**
+   /**
      * Read and return the next long.
      */
     public static long readLong() {
         return scanner.nextLong();
     }
 
-    /**
+   /**
      * Read and return the next short.
      */
     public static short readShort() {
         return scanner.nextShort();
     }
 
-    /**
+   /**
      * Read and return the next byte.
      */
     public static byte readByte() {
@@ -225,18 +225,18 @@ public final class StdIn {
             vals[i] = Double.parseDouble(fields[i]);
         return vals;
     }
-
+    
     /*** end: section (2 of 2) of code duplicated from In to StdIn */
-
-
+    
+    
     /**
      * If StdIn changes, use this to reinitialize the scanner.
      */
     private static void resync() {
-        setScanner(new Scanner(new java.io.BufferedInputStream(System.in),
-                charsetName));
+        setScanner(new Scanner(new java.io.BufferedInputStream(System.in), 
+                               charsetName));
     }
-
+    
     private static void setScanner(Scanner scanner) {
         StdIn.scanner = scanner;
         StdIn.scanner.useLocale(usLocale);
@@ -247,7 +247,7 @@ public final class StdIn {
         resync();
     }
 
-    /**
+   /**
      * Reads all ints from stdin.
      * @deprecated For more consistency, use {@link #readAllInts()}
      */
@@ -255,7 +255,7 @@ public final class StdIn {
         return readAllInts();
     }
 
-    /**
+   /**
      * Reads all doubles from stdin.
      * @deprecated For more consistency, use {@link #readAllDoubles()}
      */
@@ -263,7 +263,7 @@ public final class StdIn {
         return readAllDoubles();
     }
 
-    /**
+   /**
      * Reads all Strings from stdin.
      * @deprecated For more consistency, use {@link #readAllStrings()}
      */
